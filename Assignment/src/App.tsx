@@ -1,18 +1,16 @@
-import Counter from "./components/Counter";
-import DataFetcher from "./components/DataFetcher";
-import HelloWorld from "./components/HelloWorld";
 import Navbar from "./components/navbar";
-import RegistrationForm from "./components/RegistrationForm";
+import ReactRouting from "./components/routeComponents/ReactRouting";
 
 function App() {
   return (
     <>
-      <div className="bg-gray-200 h-fit text-center m-5">
+      <div className="bg-gray-200 h-fit text-center ">
         <Navbar />
-        <HelloWorld />
+        {/* <HelloWorld />
         <Counter />
         <DataFetcher />
-        <RegistrationForm />
+        <RegistrationForm /> */}
+        <ReactRouting />
       </div>
     </>
   );

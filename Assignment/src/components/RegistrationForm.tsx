@@ -54,8 +54,10 @@ const RegistrationForm: React.FC = () => {
 
   return (
     <>
-      <div className="bg-gray-700 mx-96 rounded p-3 mt-5">
-        <h2 className="mt-5 text-lg font-semibold text-white">Form</h2>
+      <div className="bg-gray-700  rounded-lg p-6 ">
+        <h2 className="mt-2 text-lg font-semibold text-white">
+          To contact us fill the form
+        </h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label className="text-white">Name : </label>
@@ -65,7 +67,7 @@ const RegistrationForm: React.FC = () => {
               type="text"
               value={formValues.name}
               onChange={handleChange}
-              className="border rounded px-2 py-1  mt-2"
+              className="border rounded px-2 py-1  mt-4"
             />
             {errors.name && <p className="text-red-500">{errors.name}</p>}
           </div>
