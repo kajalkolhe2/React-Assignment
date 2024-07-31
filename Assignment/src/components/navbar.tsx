@@ -3,7 +3,7 @@ import React from "react";
 const Navbar: React.FC = () => {
   return (
     <>
-      <nav className="bg-gray-800 text-white p-3 ">
+      <nav className="bg-gray-800 text-white p-4 ">
         <div className="container flex mx-auto justify-between items-center">
           <div className="text-xl font-extrabold">LOGO</div>
           <div className="space-x-6">
