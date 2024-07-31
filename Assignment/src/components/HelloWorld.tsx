@@ -3,7 +3,7 @@ import React from "react";
 const HelloWorld: React.FC = () => {
   return (
     <>
-      <div>Hello World </div>
+      <div className="text-lg font-semibold mt-5">Hello World </div>
     </>
   );
 };

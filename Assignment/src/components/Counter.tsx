@@ -12,7 +12,7 @@ const Counter: React.FC = () => {
 
   return (
     <>
-      <div className="bg-gray-700 p-5 mt-9 rounded-md mx-96">
+      <div className="bg-gray-700 p-5 mt-5 rounded-md mx-96">
         <p className="text-lg font-semibold text-white">count is {count}</p>
         <div className="space-x-4 mt-6">
           <button
