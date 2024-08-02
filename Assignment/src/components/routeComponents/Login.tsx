@@ -1,18 +1,20 @@
-import axios from "axios";
 import React, { useState } from "react";
+import HelloWorld from "../HelloWorld";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface FormValues {
-  name: string;
   email: string;
   password: string;
 }
-
-const RegistrationForm: React.FC = () => {
+const Login: React.FC = () => {
   const [formValues, setFormValues] = useState<FormValues>({
-    name: "",
     email: "",
     password: "",
   });
+
+  const [msg, setmsg] = useState("");
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState<Partial<FormValues>>({});
 
@@ -29,26 +31,25 @@ const RegistrationForm: React.FC = () => {
     if (validate()) {
       try {
         const response = await axios.post(
-          "http://localhost:8080/register",
+          "http://localhost:8080/login",
           formValues
         );
-        setFormValues(response.data);
-        console.log(response.data);
-        console.log("Form submitted:", formValues);
         setFormValues({
-          name: "",
           email: "",
           password: "",
         });
-      } catch (err) {
-        console.error(err);
+        if (response.data) {
+          navigate("/");
+        }
+        console.log("Form submitted:", response.data);
+      } catch (error) {
+        setmsg("Invalid Credentials");
       }
     }
   };
 
   const validate = (): boolean => {
     const newErrors: Partial<FormValues> = {};
-    if (!formValues.name) newErrors.name = "name is required";
     if (!formValues.email) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
@@ -61,29 +62,13 @@ const RegistrationForm: React.FC = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
   return (
     <>
-      <div className="bg-gray-200  rounded-lg p-6 h-screen flex justify-center flex-col items-center  ">
-        <div className="border-black border-2 rounded-lg p-6 px-16">
-          <h2 className="mt-2 text-3xl font-semibold text-center mb-2">
-            Registration Form
-          </h2>
+      <div className="bg-gray-200 h-screen rounded-lg p-6 flex justify-center flex-col items-center">
+        <div className="border-black border-2 rounded-lg p-6">
+          <h2 className="mt-2 text-3xl font-semibold">Login Page</h2>
           <form onSubmit={handleSubmit}>
-            <div>
-              <label className="text-lg font-medium ">Name : </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formValues.name}
-                onChange={handleChange}
-                className="border rounded py-2 w-full "
-              />
-              {errors.name && <p className="text-red-500">{errors.name}</p>}
-            </div>
-            <br />
-            <div>
+            <div className="mt-4">
               <label className="text-lg font-medium">Email : </label>
               <input
                 id="email"
@@ -91,11 +76,11 @@ const RegistrationForm: React.FC = () => {
                 type="text"
                 value={formValues.email}
                 onChange={handleChange}
-                className="border rounded py-2 w-full "
+                className="border rounded py-2 w-full mt-2"
               />
               {errors.email && <p className="text-red-500">{errors.email}</p>}
             </div>
-            <br />
+
             <div>
               <label className="text-lg font-medium">Password : </label>
               <input
@@ -104,13 +89,14 @@ const RegistrationForm: React.FC = () => {
                 type="text"
                 value={formValues.password}
                 onChange={handleChange}
-                className="border rounded py-2 w-full "
+                className="border rounded py-2 w-full mt-2"
               />
               {errors.password && (
                 <p className="text-red-500">{errors.password}</p>
               )}
             </div>
             <br />
+            <p>{msg}</p>
             <button
               type="submit"
               className="bg-blue-500 text-white px-3 py-1 mt-2 mb-2 rounded "
@@ -124,4 +110,4 @@ const RegistrationForm: React.FC = () => {
   );
 };
 
-export default RegistrationForm;
+export default Login;

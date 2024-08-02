@@ -6,13 +6,11 @@ import HelloWorld from "../HelloWorld";
 const Home: React.FC = () => {
   return (
     <>
-    <div className="h-screen">
-
-    <HelloWorld/>
-      <Counter />
-      <DataFetcher/>
-
-    </div>
+      <div className="h-screen">
+        <HelloWorld />
+        <Counter />
+        <DataFetcher />
+      </div>
     </>
   );
 };

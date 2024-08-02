@@ -10,7 +10,9 @@ const Navbar: React.FC = () => {
           <div className="space-x-6">
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
-            <Link to="/contact">Contact</Link>
+            {/* <Link to="/contact">Contact</Link> */}
+            <Link to="/register">Register</Link>
+            <Link to="/login">Login</Link>
           </div>
         </div>
       </nav>
